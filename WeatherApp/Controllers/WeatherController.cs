@@ -158,7 +158,7 @@ namespace WeatherApp_.net_.Controllers
                 { "daily", "temperature_2m_max,temperature_2m_min,weathercode" },
                 { "timezone", "auto" }
             };
-            var tempUrl = QueryHelpers.AddQueryString($"{OpenMeteo_baseUrl}/forecast", weatherQueryParams);
+            var tempUrl = QueryHelpers.AddQueryString($"{OpenMeteo_baseUrl}forecast", weatherQueryParams);
             var tempResponse = await _httpClient.GetAsync(tempUrl);
 
             if (!tempResponse.IsSuccessStatusCode)

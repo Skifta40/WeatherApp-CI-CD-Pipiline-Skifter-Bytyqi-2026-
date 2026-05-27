@@ -1,0 +1,108 @@
+﻿@using WeatherApp.Models
+@model List<WeatherModel>
+@{
+    ViewData["Title"] = "Admin Page";
+}
+
+<link rel="stylesheet" href="~/css/stylesAdmin.css" />
+
+<!-- Login Page -->
+<div id="loginPage" class="login-container" style="display:none">
+    <div class="login-box">
+        <h1>Admin Dashboard</h1>
+        <form id="loginForm">
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" required placeholder="Enter username">
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required placeholder="Enter password">
+            </div>
+            <button type="submit" class="btn btn-primary">Login</button>
+        </form>
+    </div>
+</div>
+
+<!-- Dashboard Page -->
+<div id="dashboardPage" class="dashboard-container" style="display:block">
+    <!-- Changed to display:block for initial load -->
+    <nav class="navbar">
+        <div class="navbar-content">
+            <h2>Admin Dashboard</h2>
+            <button class="btn btn-logout" onclick="logout()">Logout</button>
+        </div>
+    </nav>
+
+    <div class="dashboard-content">
+        <div class="header">
+            <h3>Database Records</h3>
+        </div>
+
+        <!-- Table -->
+        <div class="table-container">
+            <table id="dataTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>CityName</th>
+                        <th>Temperature</th>
+                        <th>Humidity</th>
+                        <th>Precipitation</th>
+                        <th>WindSpeed</th>
+                        <th>WeatherCode</th>
+                        <th>RequestTimeStamp</th>
+                        <th>Actions</th>  <!-- Added Actions column -->
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                    
+                </tbody> 
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Edit Modal -->
+<div id="modal" class="modal" style="display: none;">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2 id="modalTitle">Add New Record</h2>
+            <button class="close-btn" onclick="closeModal()">&times;</button>
+        </div>
+        <form id="dataForm">
+            <div class="form-group">
+                <label for="cityName">City Name</label>
+                <input type="text" id="cityName" name="cityName" required>
+            </div>
+            <div class="form-group">
+                <label for="temperature">Temperature</label>
+                <input type="number" id="temperature" name="temperature" step="0.1" required>
+            </div>
+            <div class="form-group">
+                <label for="humidity">Humidity</label>
+                <input type="number" id="humidity" name="humidity" required>
+            </div>
+            <div class="form-group">
+                <label for="precipitation">Precipitation</label>
+                <input type="number" id="precipitation" name="precipitation" step="0.1" required>
+            </div>
+            <div class="form-group">
+                <label for="windSpeed">Wind Speed</label>
+                <input type="number" id="windSpeed" name="windSpeed" step="0.1" required>
+            </div>
+            <div class="form-group">
+                <label for="weatherCode">Weather Code</label>
+                <input type="text" id="weatherCode" name="weatherCode" required>
+            </div>
+            <div class="modal-actions">
+                <button type="button" class="btn btn-cancel" onclick="closeModal()">Cancel</button>
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+        </form>
+    </div>
+</div>
+<script>
+    window.initialRecords = @Html.Raw(Json.Serialize(Model)) || [];
+</script>
+<script src="~/js/site.js"></script>

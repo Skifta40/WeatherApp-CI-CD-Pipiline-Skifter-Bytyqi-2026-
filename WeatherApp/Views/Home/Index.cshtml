@@ -1,0 +1,108 @@
+﻿@using WeatherApp.Models
+@model WeatherApp.Models.WHDViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+    <main id="main" class="main wrapper">
+
+        <section class="hero">
+            <div class="hero__content">
+                <h1 class="hero__title">How's the sky looking today?</h1>
+
+                <div class="hero__search">
+                    <form asp-controller="Weather" asp-action="GetWeatherData" method="post" class="hero__search-form">
+                    <input asp-for="Weather.CityName" class="hero__textbox" placeholder="Search for a place..." required minlength="1" />
+                        <span asp-validation-for="Weather.CityName" class="text-danger"></span>
+                        <button id="btnSearch" class="hero__button" type="submit">Search</button>
+                    </form>
+                </div>
+            </div>
+
+        </section>
+        @if(Model.Weather == null || Model.Hourly == null || Model.Daily == null)
+        {
+            <div class="no-data">
+                <p class="no__content">No weather data available. Please search for a location.</p>
+            </div>
+	    }
+        else{
+            <div class="dashboard">
+                <section class="current">
+                    <h2 class="visually-hidden">Current Location Temperature</h2>
+                    <div class="current__weather">
+                        <div class="current__location">
+                        <div id="dvCityCountry" class="current__city">@Model?.Weather.CityName</div>
+                        </div>
+                        <div class="current__info">
+                        <img class="current__icon" src="~/images/icon-@Model?.Weather.WeatherCode" alt="@Model?.Weather.WeatherCode" width="320" height="320">
+                        <div class="current__temp"><span id="dvCurrTemp">@Model?.Weather.Temperature</span>&deg;</div>
+                        </div>
+                    </div>
+
+                    <div class="current__conditions">
+                        <div class="block current__condition">
+                            <p class="current__condition-title">Feels Like</p>
+                        <p class="current__condition-value"><span id="pFeelsLike">@Model?.Weather.Temperature</span>&deg;C</p>
+                        </div>
+                        <div class="block current__condition">
+                            <p class="current__condition-title">Humidity</p>
+                        <p class="current__condition-value"><span id="pHumidity">@Model?.Weather.Humidity</span>%</p>
+                        </div>
+                        <div class="block current__condition">
+                            <p class="current__condition-title">Wind</p>
+                        <p id="pWind" class="current__condition-value">@Model?.Weather.WindSpeed km/h</p>
+                        </div>
+                        <div class="block current__condition">
+                            <p class="current__condition-title">Precipitation</p>
+                        <p id="pPrecipitation" class="current__condition-value">@Model?.Weather.Precipitation</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="daily">
+                    <h2 class="section__title daily__title">Daily forecast</h2>
+                    <div class="daily__forecast">
+                        @if (Model?.Daily != null)
+                        {
+                            for (int i = 0; i < Model?.Daily.Count; i++)
+                            {
+                                <div id="dvForecastDay1" class="block daily__day">
+                                    <p>@Model.Daily[i].Date</p>
+                                    <img src=~/images/icon-@Model?.Daily[i].WeatherCodeDaily" alt="icon" width="50" height="50">
+                                    <p>@Model.Daily[i].Temperature &deg;C</p>
+                                </div>
+                            }
+                        }
+                    </div>
+                </section>
+
+                <section class="hourly">
+
+                    <div class="hourly__content">
+                        <div class="hourly__header">
+                            <h2 class="section__title hourly__title">Hourly forecast</h2>
+                            <select class="dropdown hourly__select" name="hourly__select" id="ddlDay"></select>
+                        </div>
+
+                        <div class="hourly__hours">
+                            @if (Model?.Hourly != null)
+                            {
+                                for (int i = 0; i < 24 && i < Model.Hourly.Count; i++)
+                                {
+                                    <div id="dvForecastHour@(i + 1)" class="hourly__hour">
+                                        <p>@Model.Hourly[i].Time</p>
+                                        <img src="~/images/icon-@Model?.Hourly[i].WeatherCode" alt="icon" width="40" height="40">
+                                        <p>@Model.Hourly[i].Temperature &deg;C</p>
+                                    </div>
+                                }
+                            }
+                        </div>
+                    </div>
+                </section>
+            </div>
+        }
+    </main>
+
+

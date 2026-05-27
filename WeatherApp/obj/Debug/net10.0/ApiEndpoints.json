@@ -1,0 +1,44 @@
+[
+  {
+    "ContainingType": "WeatherApp.Controllers.AdminApiController",
+    "Method": "DeleteRecord",
+    "RelativePath": "api/AdminApi/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WeatherApp.Controllers.AdminApiController",
+    "Method": "Edit",
+    "RelativePath": "api/AdminApi/Edit",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "updatedRecord",
+        "Type": "WeatherApp.Models.WeatherModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "WeatherApp.Controllers.AdminApiController",
+    "Method": "GetRecords",
+    "RelativePath": "api/AdminApi/GetRecords",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  }
+]

@@ -104,7 +104,7 @@ namespace WeatherApp_.net_.Controllers
                 { "pretty", "1" }
             };
 
-            var geocodeUrl = QueryHelpers.AddQueryString("https://api.opencagedata.com/geocode/v1/json", geoCodeQueryParams);
+            var geocodeUrl = QueryHelpers.AddQueryString($"{GeoCodeAPI_baseUrl}/json", geoCodeQueryParams);
             var geocodeResponse = await _httpClient.GetAsync(geocodeUrl);
 
             if (!geocodeResponse.IsSuccessStatusCode)
@@ -158,7 +158,7 @@ namespace WeatherApp_.net_.Controllers
                 { "daily", "temperature_2m_max,temperature_2m_min,weathercode" },
                 { "timezone", "auto" }
             };
-            var tempUrl = QueryHelpers.AddQueryString($"{OpenMeteo_baseUrl}forecast", weatherQueryParams);
+            var tempUrl = QueryHelpers.AddQueryString($"{OpenMeteo_baseUrl}/forecast", weatherQueryParams);
             var tempResponse = await _httpClient.GetAsync(tempUrl);
 
             if (!tempResponse.IsSuccessStatusCode)

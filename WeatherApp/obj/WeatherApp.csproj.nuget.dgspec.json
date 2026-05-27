@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\skift_gmpk8lz\\Desktop\\WeatherApp\\WeatherApp\\WeatherApp.csproj": {}
+    "C:\\Users\\skift_gmpk8lz\\Desktop\\WeatherApp\\WeatherApp(CI-CD-Pipiline-Skifter-Bytyqi-2026)\\weatherapp\\WeatherApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\skift_gmpk8lz\\Desktop\\WeatherApp\\WeatherApp\\WeatherApp.csproj": {
+    "C:\\Users\\skift_gmpk8lz\\Desktop\\WeatherApp\\WeatherApp(CI-CD-Pipiline-Skifter-Bytyqi-2026)\\weatherapp\\WeatherApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\skift_gmpk8lz\\Desktop\\WeatherApp\\WeatherApp\\WeatherApp.csproj",
+        "projectUniqueName": "C:\\Users\\skift_gmpk8lz\\Desktop\\WeatherApp\\WeatherApp(CI-CD-Pipiline-Skifter-Bytyqi-2026)\\weatherapp\\WeatherApp.csproj",
         "projectName": "WeatherApp",
-        "projectPath": "C:\\Users\\skift_gmpk8lz\\Desktop\\WeatherApp\\WeatherApp\\WeatherApp.csproj",
+        "projectPath": "C:\\Users\\skift_gmpk8lz\\Desktop\\WeatherApp\\WeatherApp(CI-CD-Pipiline-Skifter-Bytyqi-2026)\\weatherapp\\WeatherApp.csproj",
         "packagesPath": "C:\\Users\\skift_gmpk8lz\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\skift_gmpk8lz\\Desktop\\WeatherApp\\WeatherApp\\obj\\",
+        "outputPath": "C:\\Users\\skift_gmpk8lz\\Desktop\\WeatherApp\\WeatherApp(CI-CD-Pipiline-Skifter-Bytyqi-2026)\\weatherapp\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

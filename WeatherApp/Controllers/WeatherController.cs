@@ -9,20 +9,32 @@ using Newtonsoft.Json.Linq;
 using WeatherApp.Models;
 using WeatherApp.Repositories;
 using WeatherApp_.net_.Models;
+using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.WebUtilities;
 
 namespace WeatherApp_.net_.Controllers
 {
+
     public class WeatherController : Controller
     {
+        private readonly string OpenGate_apiKey;
+        private readonly string OpenMeteo_baseUrl;
+        private readonly string GeoCodeAPI_baseUrl;
+
         public readonly IWeatherRepository _weatherRepository;
 
 
         private static readonly HttpClient _httpClient = new HttpClient();
-        public WeatherController(IWeatherRepository weatherRepository)
+        public WeatherController(IWeatherRepository weatherRepository, IConfiguration configuration)
         {
             _weatherRepository = weatherRepository;
+            OpenGate_apiKey = configuration["GeoCodeAPI:ApiKey"]
+                ?? throw new ArgumentNullException("API Key is missing from configuration!");
+            OpenMeteo_baseUrl = configuration["OpenMeteo:BaseUrl"]
+                ?? throw new ArgumentNullException("Base URL is missing!");
+            GeoCodeAPI_baseUrl = configuration["OpenCage:BaseUrl"]
+                ?? throw new ArgumentNullException("GeoCode API Base URL is missing!");
         }
-
         private static readonly string[] Codes = CreateCodes();
 
         private static string[] CreateCodes()
@@ -81,9 +93,18 @@ namespace WeatherApp_.net_.Controllers
                     Message = "Please enter a city name."
                 });
 
-            var geocodeKey = "64758a99a1db4f3e85d5c4e7eb8f4143";
+            var geocodeKey = OpenGate_apiKey;
             var searchCity = model.Weather.CityName;
-            var geocodeUrl = $"https://api.opencagedata.com/geocode/v1/json?q={searchCity}&key={geocodeKey}&language=en&pretty=1";
+
+            var geoCodeQueryParams = new Dictionary<string, string?>
+            {
+                { "q", searchCity },
+                { "key", geocodeKey },
+                { "language", "en" },
+                { "pretty", "1" }
+            };
+
+            var geocodeUrl = QueryHelpers.AddQueryString("https://api.opencagedata.com/geocode/v1/json", geoCodeQueryParams);
             var geocodeResponse = await _httpClient.GetAsync(geocodeUrl);
 
             if (!geocodeResponse.IsSuccessStatusCode)
@@ -94,7 +115,7 @@ namespace WeatherApp_.net_.Controllers
                 });
 
             var geocodeData = await geocodeResponse.Content.ReadAsStringAsync();
-            
+
             JObject geocodeJson;
             try
             {
@@ -108,7 +129,7 @@ namespace WeatherApp_.net_.Controllers
                     Message = "Failed to parse geocode data"
                 });
             }
-            
+
             var results = geocodeJson["results"] as JArray;
             if (results == null || results.Count == 0)
                 return View("Error", new ErrorViewModel
@@ -128,7 +149,16 @@ namespace WeatherApp_.net_.Controllers
                     Message = "Invalid geocode response"
                 });
 
-            var tempUrl = $"https://api.open-meteo.com/v1/forecast?latitude={latitude}&longitude={longitude}&current_weather=true&hourly=temperature_2m,weathercode,precipitation,relative_humidity_2m&daily=temperature_2m_max,temperature_2m_min,weathercode&timezone=auto";
+            var weatherQueryParams = new Dictionary<string, string?>
+            {
+                { "latitude", latitude.ToString() },
+                { "longitude", longitude.ToString() },
+                { "current_weather", "true" },
+                { "hourly", "temperature_2m,weathercode,precipitation,relative_humidity_2m" },
+                { "daily", "temperature_2m_max,temperature_2m_min,weathercode" },
+                { "timezone", "auto" }
+            };
+            var tempUrl = QueryHelpers.AddQueryString($"{OpenMeteo_baseUrl}forecast", weatherQueryParams);
             var tempResponse = await _httpClient.GetAsync(tempUrl);
 
             if (!tempResponse.IsSuccessStatusCode)
@@ -181,7 +211,7 @@ namespace WeatherApp_.net_.Controllers
             JArray dailyWeatherCodes = (JArray)tempJson["daily"]?["weathercode"];
 
 
-            if (temperatures == null || humidities == null || precipitations == null || weatherCodes == null || timeStamps == null || dates == null || maxTemps == null || minTemps == null || dailyWeatherCodes== null)
+            if (temperatures == null || humidities == null || precipitations == null || weatherCodes == null || timeStamps == null || dates == null || maxTemps == null || minTemps == null || dailyWeatherCodes == null)
                 return View("Error", new ErrorViewModel
                 {
                     RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier,

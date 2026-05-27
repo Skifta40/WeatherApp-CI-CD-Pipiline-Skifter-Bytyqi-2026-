@@ -19,45 +19,45 @@ build_property.TargetFrameworkIdentifier = .NETCoreApp
 build_property.TargetFrameworkVersion = v10.0
 build_property.RootNamespace = WeatherApp
 build_property.RootNamespace = WeatherApp
-build_property.ProjectDir = C:\Users\skift_gmpk8lz\Desktop\WeatherApp\WeatherApp\
+build_property.ProjectDir = C:\Users\skift_gmpk8lz\Desktop\WeatherApp\WeatherApp(CI-CD-Pipiline-Skifter-Bytyqi-2026)\weatherapp\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 9.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\skift_gmpk8lz\Desktop\WeatherApp\WeatherApp
+build_property.MSBuildProjectDirectory = C:\Users\skift_gmpk8lz\Desktop\WeatherApp\WeatherApp(CI-CD-Pipiline-Skifter-Bytyqi-2026)\weatherapp
 build_property._RazorSourceGeneratorDebug = 
 build_property.EffectiveAnalysisLevelStyle = 10.0
 build_property.EnableCodeStyleSeverity = 
 
-[C:/Users/skift_gmpk8lz/Desktop/WeatherApp/WeatherApp/Views/Admin/IndexAdmin.cshtml]
+[C:/Users/skift_gmpk8lz/Desktop/WeatherApp/WeatherApp(CI-CD-Pipiline-Skifter-Bytyqi-2026)/weatherapp/Views/Admin/IndexAdmin.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cSW5kZXhBZG1pbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/skift_gmpk8lz/Desktop/WeatherApp/WeatherApp/Views/Home/Index.cshtml]
+[C:/Users/skift_gmpk8lz/Desktop/WeatherApp/WeatherApp(CI-CD-Pipiline-Skifter-Bytyqi-2026)/weatherapp/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/skift_gmpk8lz/Desktop/WeatherApp/WeatherApp/Views/Home/Privacy.cshtml]
+[C:/Users/skift_gmpk8lz/Desktop/WeatherApp/WeatherApp(CI-CD-Pipiline-Skifter-Bytyqi-2026)/weatherapp/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/skift_gmpk8lz/Desktop/WeatherApp/WeatherApp/Views/Shared/Error.cshtml]
+[C:/Users/skift_gmpk8lz/Desktop/WeatherApp/WeatherApp(CI-CD-Pipiline-Skifter-Bytyqi-2026)/weatherapp/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/skift_gmpk8lz/Desktop/WeatherApp/WeatherApp/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/skift_gmpk8lz/Desktop/WeatherApp/WeatherApp(CI-CD-Pipiline-Skifter-Bytyqi-2026)/weatherapp/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/skift_gmpk8lz/Desktop/WeatherApp/WeatherApp/Views/_ViewImports.cshtml]
+[C:/Users/skift_gmpk8lz/Desktop/WeatherApp/WeatherApp(CI-CD-Pipiline-Skifter-Bytyqi-2026)/weatherapp/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/skift_gmpk8lz/Desktop/WeatherApp/WeatherApp/Views/_ViewStart.cshtml]
+[C:/Users/skift_gmpk8lz/Desktop/WeatherApp/WeatherApp(CI-CD-Pipiline-Skifter-Bytyqi-2026)/weatherapp/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/skift_gmpk8lz/Desktop/WeatherApp/WeatherApp/Views/Shared/_Layout.cshtml]
+[C:/Users/skift_gmpk8lz/Desktop/WeatherApp/WeatherApp(CI-CD-Pipiline-Skifter-Bytyqi-2026)/weatherapp/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-ainogv7fv6

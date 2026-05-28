@@ -54,4 +54,4 @@ jobs:
         GeoCodeAPI__ApiKey: ${{ secrets.GEOCODEAPI__APIKEY }}
       run: |
         echo "Building isolated runtime environment for PR #${{ github.event.number }}..."
-        echo "Preview Target URL: https://preview-pr-${{ github.event.number }}.weatherapp.local"
+        echo "Preview Target URL: https://weatherapp-ci-cd-pipiline-skifter-bytyqi.onrender.com"

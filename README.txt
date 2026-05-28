@@ -42,11 +42,13 @@ Weather App (CI/CD Pipeline)
 
         2. Configure Local SecretsInitialize user secrets inside your local project directory to load credentials outside of your Git root:
             dotnet user-secrets init
-            dotnet user-secrets set "MyApiKey" "your_development_api_key"
+            dotnet user-secrets set "GeoCodeAPI:ApiKey" "64758a99a1db4f3e85d5c4e7eb8f4143"
             dotnet user-secrets set "OpenMeteo:BaseUrl" "https://api.open-meteo.com/v1/"
+            dotnet user-secrets set "OpenCage:BaseUrl" "https://api.opencagedata.com/geocode/v1" 
         3. Run the Application Localy
+            cd WeatherApp
             dotnet restore
-            dotnet run --project YourProjectFolderName
+            dotnet run 
     
         The API will spin up and be accessible locally at http://localhost:5000 or https://localhost:5001.
 
@@ -59,8 +61,9 @@ Weather App (CI/CD Pipeline)
         Run the container:
             Pass your local configurations directly into the container engine using environment flags: 
                 docker run -d -p 10000:10000 \
-                -e MyApiKey="your_production_api_key" \
+                -e GeoCodeAPI__ApiKey="your_production_api_key" \
                 -e OpenMeteo__BaseUrl="https://api.open-meteo.com/v1/" \
+                -e OpenCage:BaseUrl="https://api.opencagedata.com/geocode/v1" \
                 weather-app:latest
 
 
@@ -70,3 +73,6 @@ Weather App (CI/CD Pipeline)
     Compiles the binaries and executes all automated unit/integration tests with production-ready variable masks.
     Production Environment Mapping TableWhen deploying to cloud native hosts or orchestration layers (like Render, Docker Swarm, or Kubernetes), 
     register your configurations directly via the host dashboard using these exact keys:
+    "GeoCodeAPI:ApiKey" "64758a99a1db4f3e85d5c4e7eb8f4143"
+    "OpenMeteo:BaseUrl" "https://api.open-meteo.com/v1/"
+    "OpenCage:BaseUrl" "https://api.opencagedata.com/geocode/v1" 

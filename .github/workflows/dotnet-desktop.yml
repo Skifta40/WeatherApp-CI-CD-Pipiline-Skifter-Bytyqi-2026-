@@ -55,11 +55,3 @@ jobs:
       run: |
         echo "Building isolated runtime environment for PR #${{ github.event.number }}..."
         echo "Preview Target URL: https://preview-pr-${{ github.event.number }}.weatherapp.local"
-
-  cleanup-preview:
-    if: github.event_name == 'pull_request' && github.event.action == 'closed'
-    runs-on: ubuntu-latest
-    steps:
-    - name: Tear Down Preview Resources
-      run: |
-        echo "PR #${{ github.event.number }} closed. Evicting temporary resources to eliminate costs."
